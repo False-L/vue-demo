@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.png">
+    <title>props双向绑定</title>
+  </head>
+<body>
+  <div id="exp">
+     <input v-model="parentMsg" >
+      <br>
+      <child v-bind:message="parentMsg"></child>
+  </div>
+    </body>
+    <script src="js/vue.js"></script>
+<script>
+Vue.component('child', {
+  props: ['message'],
+  // 同样也可以在 vm 实例中像 “this.message” 这样使用
+  template: '<span>{{ message }}</span>'
+})
+new Vue({
+  el:'#exp',
+  data:{
+    parentMsg:'moren'
+  }
+})
+</script>
+</html>
